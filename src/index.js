@@ -10,6 +10,8 @@ const client = new ApolloClient({
   uri: "http://localhost:3000",
 });
 
+console.log('index::process.env.MY_ENV_VARIABLE -> ', process.env.MY_ENV_VARIABLE);
+
 ReactDOM.render(
   <ApolloProvider client={client}>
     <App />

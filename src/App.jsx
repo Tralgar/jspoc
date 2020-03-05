@@ -7,7 +7,9 @@ import './App.css';
 import Hook from './Hook';
 import FunctionalComponent from './FunctionalComponent';
 import User from './User';
-import ReusableHook from "./ReusableHook";
+import Filepond from './Filepond';
+import ReusableHook from './ReusableHook';
+import RenderProps from "./RenderProps";
 // const Lazy = lazy(() => import('./Lazy'));
 
 class App extends Component {
@@ -17,6 +19,8 @@ class App extends Component {
     this.state = {
       functionalComponentName: '',
     };
+
+    console.log('App::this.props -> ', this.props);
 
     this.inputFunctionalComponentRef = React.createRef();
   }
@@ -63,6 +67,8 @@ class App extends Component {
               hot reload is enabled...
             </div>
             <ReusableHook />
+            <Filepond />
+            <RenderProps />
           </div>
         </div>
       </div>
