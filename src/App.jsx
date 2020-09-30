@@ -9,7 +9,9 @@ import FunctionalComponent from './FunctionalComponent';
 import User from './User';
 import Filepond from './Filepond';
 import ReusableHook from './ReusableHook';
-import RenderProps from "./RenderProps";
+import RenderProps from './RenderProps';
+import BigCalendar from './BigCalendar';
+import './helpers';
 // const Lazy = lazy(() => import('./Lazy'));
 
 class App extends Component {
@@ -19,6 +21,16 @@ class App extends Component {
     this.state = {
       functionalComponentName: '',
     };
+
+    // cors test
+    fetch('https://api.github.com/orgs/nodejs', {
+      mode: 'cors', // Useful for including session ID (and, IIRC, authorization headers)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data) // Prints result from `response.json()`
+      })
+      .catch(error => console.error(error))
 
     console.log('App::this.props -> ', this.props);
 
@@ -69,6 +81,7 @@ class App extends Component {
             <ReusableHook />
             <Filepond />
             <RenderProps />
+            <BigCalendar />
           </div>
         </div>
       </div>

@@ -82,6 +82,17 @@ function closureTest() {
   inc();
 }
 
+// Hoisting in Lexical Environment (identifier-variable mapping) during "creation phase"
+/* All declarations (function, var, let, const and class) are hoisted in JavaScript,
+while the var declarations are initialized with undefined, but let and const declarations remain uninitialized. */
+function varOrConst() {
+  console.log(varone);
+  console.log(vartwo);
+
+  var varone = 1;
+  const vartwo = 2;
+}
+
 cloningTest();
 referenceTest({ id: 1, title: 'my title', stats: { hp: 100, mana: 100 }});
 reference2Test();
@@ -89,3 +100,43 @@ immutableTest();
 immutableStrictTest();
 new ScopeTest().test();
 closureTest();
+
+
+// How to get console.log(obj.a, obj.a, obj.a); => 1 2 3
+
+const obj = {
+  value: 0,
+  get a() {
+    this.value++;
+    return this.value;
+  },
+};
+
+console.log(obj.a, obj.a, obj.a);
+
+
+// javascript execution queues
+const race1 = () => {
+  setTimeout(() => console.log("Horse A"), 0);
+  // wait60Seconds();
+  console.log("Horse B")
+}
+
+race1();
+// Horse B
+// Horse A
+//  Synchronous operations always take precedence in JavaScript. The event loop will never dequeue an asynchronous
+//  operation while there are any sort of synchronous functions being pushed on the stack, no matter how long it takes.
+
+const race2 = () => {
+  setTimeout(() => console.log("Horse A"), 0);
+  const promise = Promise.resolve();
+  promise.then(() => console.log("Horse B"));
+  console.log("Horse C")
+}
+
+race2();
+// Horse C
+// Horse B
+// Horse A
+// coz microtask queue (originally called PromiseJobs ) that specifically manages Promises.
