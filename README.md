@@ -1,3 +1,3 @@
 # jspoc
 
-`yarn start` to run webpack-dev-server
+Test what ever you want in JS bro + test abilities
