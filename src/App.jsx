@@ -12,6 +12,7 @@ import ReusableHook from './ReusableHook';
 import RenderProps from './RenderProps';
 import BigCalendar from './BigCalendar';
 import './helpers';
+import MaterialUIBundleSize from "./MaterialUIBundleSize";
 // const Lazy = lazy(() => import('./Lazy'));
 
 class App extends Component {
@@ -82,6 +83,7 @@ class App extends Component {
             <Filepond />
             <RenderProps />
             <BigCalendar />
+            <MaterialUIBundleSize />
           </div>
         </div>
       </div>
